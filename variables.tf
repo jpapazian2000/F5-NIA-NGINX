@@ -17,5 +17,7 @@ variable "nginx_servers" {
       var.nginx_servers <= 4
       )
      error_message = "The number of nginx servers must be an integer between 1 and 4."
+  }
+}
 
 
