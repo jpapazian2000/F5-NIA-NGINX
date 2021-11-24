@@ -35,7 +35,7 @@ resource "aws_autoscaling_group" "nginx" {
   min_size             = var.nginx_servers
   max_size             = 4
   #vpc_zone_identifier  = [module.vpc.public_subnets[0]]
-  vpc_zone_identifier  = data.terraform_remote_state.vpc.vpc_zone_identifier
+  vpc_zone_identifier  = data.terraform_remote_state.vpc.outputs.vpc_zone_identifier
 
   lifecycle {
     create_before_destroy = true
