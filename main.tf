@@ -63,13 +63,13 @@ resource "aws_launch_configuration" "nginx" {
   associate_public_ip_address = true
 
   #security_groups = [aws_security_group.nginx.id]
-  security_groups = [data.terraform_remote_state.vpc.outputs.aws_security_group.nginx.id]
+  security_groups = [data.terraform_remote_state.vpc.outputs.aws_security_group_id]
   #key_name        = aws_key_pair.demo.key_name
   #key_name        = data.terraform_remote_state.aws_key_pair.demo.key_name
   user_data       = file("./scripts/nginx.sh")
 
   #iam_instance_profile = aws_iam_instance_profile.consul.name
-  iam_instance_profile = data.terraform_remote_state.vpc.outputs.aws_iam_instance_profile.consul.name
+  iam_instance_profile = data.terraform_remote_state.vpc.outputs.aws_iam_instance_profile_name
 
   lifecycle {
     create_before_destroy = true
